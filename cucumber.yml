@@ -22,7 +22,7 @@ steptesting: --tags @steptesting <%= common %> SELECTED_ENV=steptesting
 default: --profile steptesting
 
 #print all step definitions which exist:
-stepdefs:   --dry-run --format stepdefs
+stepdefs:   --dry-run --format stepdefs <%= common %>
 #list all tags defined in the .feature files:
 #see http://www.natontesting.com/2012/06/26/list-all-tags-in-cucumber/
 tags:       --dry-run --format Cucumber::Formatter::ListTags

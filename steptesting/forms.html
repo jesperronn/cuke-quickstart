@@ -9,6 +9,21 @@
     display: none;
   }
   </style>
+  <script type="text/javascript" src="jquery-1.10.2.min.js"></script>
+  <script type="text/javascript">
+  function deleteLine(e){
+    $(this).closest('p').remove();
+  }
+
+  function init(){
+
+
+    $('.btn').on('click', deleteLine);
+  }
+
+  $(document).ready(init);
+
+  </script>
 
  
 </head>
@@ -73,6 +88,9 @@ textarea</pre>
 hidden
 textarea</textarea>
       </p>
+
+<p><button class="btn">Press this button</button> to remove this line with button</p>
+<p><input class="btn" type="button" value="Press this other button"/> to remove this line with input[button]</p>
 
 
 

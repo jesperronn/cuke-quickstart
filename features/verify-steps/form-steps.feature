@@ -57,10 +57,29 @@ Feature: Form steps verification
 
     * I fill in "Expiry date" with today plus 2
     * the "Expiry date" field should contain "03/10/2012"
-    * I fill in "Expiry date" with today plus 31
-    * the "Expiry date" field should contain "01/11/2012"
+    * I fill in "Expiry date" with today plus 31 with dot-format
+    * the "Expiry date" field should contain "01.11.2012"
 
-   
+
+    Scenario: Verify click on button
+      Given I go to /forms.html
+      * I should see "Press this button to remove this line with button"
+      * I press "Press this button"
+      * I should not see "Press this button"
+
+    
+    @ignore @fails
+    Scenario: Verify click on input[type=button]
+      Given I go to /forms.html
+      #* I should see "Press this other button to remove this line"
+      * I should see "Press this other button"
+      * I should see " to remove this line with input[button]"
+      * I press "Press this other button"
+      * I should not see "Press this other button"
+
+    
+    
+
 
   @ignore @fails  
   Scenario: Hidden fields
