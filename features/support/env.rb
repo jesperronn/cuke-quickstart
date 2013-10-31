@@ -106,17 +106,6 @@ end
 
 
 
-#Login only once
-#see discussion: https://groups.google.com/forum/?fromgroups=#!topic/cukes/U_8NvQ7epJc
-# Before do
-#   if !$dunit
-#     $logger.warn "running before login step"
-#     step "I log in as testuser14 with customercode 11301181"
-#     $dunit = true
-#   end
-# end
-
-
 #hack to preserve cookies between tests
 After do
   $cookies = page.driver.cookies
@@ -134,13 +123,3 @@ Before do
   end
 end
 
-# Hooks to force enabling/disabling of invoicing feature
-# this is used to ensure that we can keep testing the feature that is disabled by default
-# To use the hook, just add @force_enabling_of_feature_INVOICING on the test
-Before('@force_enabling_of_feature_INVOICING') do
-    step %{I log in as testuser21 with customercode 11301181}
-    step %{I enable feature invoicing}
-end
-After('@force_enabling_of_feature_INVOICING') do
-  step %{I disable feature invoicing}
-end
