@@ -39,8 +39,8 @@ Feature: Form steps verification
   Scenario: Field should not be empty
     Given I go to /forms.html
     * the "Expiry date" field should be empty
-    #@ignore @fails
-    #* the "Expiry date" field should not be empty
+    * I fill in "Expiry date" with "20.02.1999"
+    * the "Expiry date" field should not be empty
 
 
 

@@ -124,7 +124,7 @@ Then(/^the "(.*?)" field should be empty$/) do |locator|
 end
 
 Then(/^the "(.*?)" field should not be empty$/) do |field|
-  page.should have_field(field, :with => "^.+")
+  should_not have_field field, with: ""
 end
 
 Then /^the "(.*?)" field should contain "(.*?)"$/ do |field, value|
