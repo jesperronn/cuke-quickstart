@@ -3,13 +3,13 @@
 #
 
 test:
-	node capybara-test/server.js &
+	node steptesting/server.js &
 	cucumber 
-	kill -9 `cat capybara-test/pid.txt`
-	rm capybara-test/pid.txt
+	kill -9 `cat steptesting/pid.txt`
+	rm steptesting/pid.txt
 
 install:
-	cd capybara-test && npm install && cd -
-	echo "node modules successfully installed in capybara-test/node_modules"
+	cd steptesting && npm install && cd -
+	echo "node modules successfully installed in steptesting/node_modules"
 	echo
 	echo "run tests by typing 'make test'"

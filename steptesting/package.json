@@ -2,11 +2,11 @@
     "name": "cucumber-myml-steps-test"
   , "description": "Tests suite of our custom cucumber steps to ensure all is working correctly"
   , "version": "0.1.0"
-  , "keywords": ["cucumbersteps"]
-  , "scripts": { "test": "make test" }
+  , "keywords": ["cucumbersteps", "cucumber", "step_definitions", "phantomjs", "capybara"]
+  , "scripts": { "test": "make test", "install": "make install" }
   , "repository": {
       "type": "git"
-    , "url": "https://github.com/twitter/bootstrap.git"
+    , "url": "https://github.com/jesperronn/cuke-quickstart.git"
   }
   , "licenses": [
     {
