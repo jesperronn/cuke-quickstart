@@ -69,6 +69,39 @@ Now, copy and modify the /testdata/*.yml file to fit your need
 As the example shows, you can start with using predefined steps and get going. 
 
 
+AVAILABLE COMMANDS
+==================
+
+These commands are good to familiarize
+
+    $ node steptesting/server.js
+
+Starts a simple server on localhost:3000 with flat html pages that phantomjs runs against
+
+    $ cucumber -p steptesting
+
+Runs the cucumber test suite against the running simple server. Suite takes just a few seconds to run on my machine
+
+
+    $ cucumber -p steptesting -p stepdefs
+
+Shows which step_definitions are actually found in the cucumber .feature files.
+Simple form of coverage -- you can see which steps are not used by tests yet.
+
+
+    $ make test
+
+Will run the server and the test suite. if all goes well, it kills the server afterwards
+
+    $ make install
+
+Will install the npm packages required to run
+
+
+    $ lsof -i :3000
+
+Will tell you the process id if the server is still running. (then you can kill it)
+
 
 
 INSTALLATION PREREQUISITES
