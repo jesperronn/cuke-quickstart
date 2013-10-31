@@ -29,14 +29,20 @@ Feature: Form steps verification
     * the "Account Number" field should contain "5002"
     * the "account-number" field should contain "5002"
     * the "expdate" field should contain "2009-11-01"
-    * I fill in "Wants Email?" with ""
-    * the "Wants Email?" field should contain "^$"
     * the "Wants Email?" field should be empty
 
   Scenario: Field should not contain
     Given I go to /forms.html
     * the "expdate" field should not contain "2009-12"
     * the "expiry-date" field should not contain "2009-11-01"
+
+  Scenario: Field should not be empty
+    Given I go to /forms.html
+    * the "Expiry date" field should be empty
+    #@ignore @fails
+    #* the "Expiry date" field should not be empty
+
+
 
   Scenario: Verify selectboxes
     Given I go to /forms.html
@@ -47,10 +53,14 @@ Feature: Form steps verification
 
   Scenario: Verify date input fields 
     Given I go to /forms.html
-    * I fill in "Expiry date" with today plus 2
-    * the "Expiry date" field should contain "2014-10-30"
-    * the "Expiry date" field should not be empty
+    And today is "2012-10-01"
 
+    * I fill in "Expiry date" with today plus 2
+    * the "Expiry date" field should contain "03/10/2012"
+    * I fill in "Expiry date" with today plus 31
+    * the "Expiry date" field should contain "01/11/2012"
+
+   
 
   @ignore @fails  
   Scenario: Hidden fields

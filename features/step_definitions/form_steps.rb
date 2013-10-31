@@ -43,9 +43,21 @@ When /^(?:|I )fill in the following:$/ do |fields|
   end
 end
 
+
+# Sets @today as a constant so that we can later compare dates with @today 
+# example
+#   Given today is "2012-10-01"
+#
+# Used by 'I fill in "" with today plus x'
+# 
+Given /^today is "(.+?)"$/ do |date|
+  @today = Date.parse(date)
+end
+
+
 When /^I fill in "(.*?)" with today plus (\d+)$/ do |field, dateDiff|
   element = find_field(field)
-  val = (Date.today + dateDiff.to_i).strftime('%d/%m/%Y')
+  val = (@today + dateDiff.to_i).strftime(DateFormat::uk)
   element.set(val)
 
   find('body').trigger "mousedown"
@@ -53,7 +65,7 @@ end
 
 When /^I fill in "(.*?)" with today plus (\d+) with dot-format$/ do |field, dateDiff|
   element = find_field(field)
-  val = (Date.today + dateDiff.to_i).strftime('%d.%m.%Y')
+  val = (@today + dateDiff.to_i).strftime(DateFormat::eu)
   element.set(val)
 
   find('body').trigger "mousedown"
@@ -108,7 +120,7 @@ When /^(?:|I )attach the file "(.*?)" to "(.*?)"$/ do |file, field|
 end
 
 Then(/^the "(.*?)" field should be empty$/) do |locator|
-  page.should have_field(locator, :with => /^$/)
+  page.should have_field(locator, :with => "")
 end
 
 Then(/^the "(.*?)" field should not be empty$/) do |field|
