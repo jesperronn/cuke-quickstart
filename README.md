@@ -1,7 +1,25 @@
 CUCUMBER TESTING
 ================
 
-This /cucumber folder is used for testing our frontend code/javascript.
+This /cucumber folder is used for testing frontend code/javascript.
+I wanted a **quick start** where everything is set up and works.
+
+Use this project as a template so you can easily get started.
+You basically copy this into your project, add your own .feature 
+files, and you're done.
+
+Included in this project
+
+   * Phantomjs for fast headless browser testing
+   * A set of standard ready-to-use Cucumber steps (should covers 80% of your need)
+
+Worth of notice:
+ 
+  * Saves a screenshot of every failing test (saves in test-results/screenshots)
+  * Logs http requests in a logfile -- you can easily add to the logfile what you need
+
+Most of these things are not new -- I just decided to collect them in one package easy to reuse.
+
 
 
 USAGE
