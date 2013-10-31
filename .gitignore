@@ -1,0 +1,5 @@
+.DS_Store
+capybara-test/node_modules/
+capybara-test/pid.txt
+features/step_definitions/forget/
+test-results

@@ -1,0 +1,12 @@
+# Testdata is now loaded from this file in Yaml format
+environment:
+  url: http://localhost
+  port: 3000 
+  user_prefix:
+  path_prefix:
+  has_local_server: true
+  use_no_proxy: true
+
+testdata: 
+  environment: STEPTESTING
+

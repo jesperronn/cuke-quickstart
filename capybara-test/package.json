@@ -1,0 +1,23 @@
+{
+    "name": "cucumber-myml-steps-test"
+  , "description": "Tests suite of our custom cucumber steps to ensure all is working correctly"
+  , "version": "0.1.0"
+  , "keywords": ["cucumbersteps"]
+  , "scripts": { "test": "make test" }
+  , "repository": {
+      "type": "git"
+    , "url": "https://github.com/twitter/bootstrap.git"
+  }
+  , "licenses": [
+    {
+        "type": "Apache-2.0"
+      , "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ]
+  , "devDependencies": {
+      "uglify-js": "1.3.4"
+    , "jshint": "0.9.1"
+    , "recess": "1.1.6"
+    , "connect": "2.1.3"
+  }
+}

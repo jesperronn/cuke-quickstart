@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Cucumber form steps Test Suite</title>
+  <style type="text/css">
+  /* css needed to verify steps */
+  body{font-family: Helvetica, Arial, sans-serif; background:white;}
+  .hidden, .hide{
+    display: none;
+  }
+  </style>
+
+ 
+</head>
+<body>
+  <h1>Cucumber form steps Test Suite</h1>
+  <p>Page for <code>form-steps.feature</code> to verify <code>step_definitions/form_steps.rb</code></p>
+  <form action="submit.html" method="get">
+    <p><label>Account Number<br>
+      <input type="text" name="account-number"/>
+      </label>
+    </p>
+
+    <p><label>Expiry date<br>
+        <input type="text" name="expiry-date" id="expdate"/>
+      </label>
+    </p>
+
+    <p><label>Wants Email?<br>
+        <input type="text" name="wants-email" value=""/>
+      </label>
+    </p>
+
+    <p><label>Sex<br>
+        <select>
+          <option value="m">Male</option>
+          <option value="fm">Female</option>
+        </select>
+      </label>
+    </p>
+
+    <p><label>
+        <input type="checkbox" name="accept"/>Accept user agreement
+      </label>
+    </p>
+    <p><label>
+        <input type="checkbox" name="send-letters"/>Send me letters
+      </label>
+    </p>
+
+    <p>Favourite Radio station:<br>
+        <label><input type="radio" name="pick-channel" value="p1"/>Radio 1</label>
+        <label><input type="radio" name="pick-channel" value="p2"/>Radio 2</label>
+        <label><input type="radio" name="pick-channel" value="p3"/>Radio 3</label>
+    </p>
+
+    <p><label>Avatar<br>
+        <input type="file"/>
+      </label>
+    </p>
+    
+    <p>Hidden field here (with value "the hidden stuff")
+        <input type="hidden" name="hidden-name" id="hidden-id" value="the hidden stuff"/>
+      
+    </p>
+
+    <p>Hidden textarea here with value</p>
+<pre>the
+hidden
+textarea</pre>
+<p class="hide textarea-container">
+        <textarea name="hidden-textarea">the
+hidden
+textarea</textarea>
+      </p>
+
+
+
+ </form>
+ 
+</body>
+</html>
