@@ -56,5 +56,5 @@ DEPENDENCIES
   cucumber (~> 1.3)
   launchy
   net-ssh
-  poltergeist (~> 1.3)
+  poltergeist (~> 1.4)
   rspec
