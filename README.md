@@ -69,6 +69,13 @@ Now, copy and modify the /testdata/*.yml file to fit your need
 As the example shows, you can start with using predefined steps and get going. 
 
 
+AVAILABLE STEP_DEFINITIONS
+==========================
+The step definitions available 
+
+
+see [AVAILABLE_STEPS.txt](AVAILABLE_STEPS.txt)
+
 AVAILABLE COMMANDS
 ==================
 
@@ -103,6 +110,13 @@ Will install the npm packages required to run
 Will tell you the process id if the server is still running. (then you can kill it)
 
 
+    $ cucumber -p stepdefs | grep "/^"
+
+creates list of available steps from the step definitions file
+
+    $ make stepdefs
+
+Creates a AVAILABLE_STEPS.md file where you can see all steps that are currently defined. Also it has a list of unused steps in the bottom. The bottom steps are the ones not being used in any tests
 
 INSTALLATION PREREQUISITES
 ==========================
