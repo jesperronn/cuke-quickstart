@@ -57,7 +57,8 @@ end
 
 When /^I fill in "(.*?)" with today plus (\d+)$/ do |field, dateDiff|
   element = find_field(field)
-  val = (@today + dateDiff.to_i).strftime(DateFormat::uk)
+  now = @today || Date.today
+  val = (now + dateDiff.to_i).strftime(DateFormat::uk)
   element.set(val)
 
   find('body').trigger "mousedown"
@@ -65,6 +66,8 @@ end
 
 When /^I fill in "(.*?)" with today plus (\d+) with dot-format$/ do |field, dateDiff|
   element = find_field(field)
+  now = @today || Date.today
+  val = (now + dateDiff.to_i).strftime(DateFormat::eu)
   val = (@today + dateDiff.to_i).strftime(DateFormat::eu)
   element.set(val)
 
@@ -107,7 +110,7 @@ Then(/^"(.*?)" should not be checked$/) do |field|
   find_field(field, :checked => false)
 end
 
-Then(/^"(.*?)" should be checked/) do |field|
+Then(/^"(.*?)" should be checked$/) do |field|
   find_field(field, :checked => true)
 end
 
