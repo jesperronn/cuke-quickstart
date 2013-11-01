@@ -45,8 +45,8 @@ if MyData.env('has_local_server')
   if !res
     puts
     puts
-    puts "FATAL: Play server not running. Expected http://#{host}:#{MyData.env('port')}"
-    puts "Start play test server: 'cdplay && play test --http.port=#{MyData.env('port')}'"
+    puts "FATAL: Local server not running. Expected http://#{host}:#{MyData.env('port')}"
+    puts "Start local test server: 'make test' or 'make server_start'"
     exit
   end
 end
