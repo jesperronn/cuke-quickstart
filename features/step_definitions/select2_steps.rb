@@ -3,7 +3,7 @@
 # NOTE: Requries javascript methods to be available on page -- we could however
 #       pass them in via evaluate_script
 #
-When /^I select first option from "(.*?)" in "(.*?)"$/ do |text, selector |
+When /^(?:|I )select first option from "(.*?)" in "(.*?)"$/ do |text, selector |
   page.evaluate_script(%[ select2TypeAndOpen("#{selector}", "#{text}") ])
   sleep(0.2)
   step %(I should see ignorecase "#{text}" within .select2-result-label)
@@ -17,7 +17,7 @@ When /^I select first option from "(.*?)" in "(.*?)"$/ do |text, selector |
   sleep(0.2)
 end
 
-When /^I select2 "(.*?)" in "(.*?)"$/ do |text, selector |
+When /^(?:|I )select2 "(.*?)" in "(.*?)"$/ do |text, selector |
   page.evaluate_script(%[ select2Select("#{selector}", "#{text}") ])
   sleep(1.2)
 end

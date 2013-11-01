@@ -55,7 +55,7 @@ Given /^today is "(.+?)"$/ do |date|
 end
 
 
-When /^I fill in "(.*?)" with today plus (\d+)$/ do |field, dateDiff|
+When /^(?:|I )fill in "(.*?)" with today plus (\d+)$/ do |field, dateDiff|
   element = find_field(field)
   now = @today || Date.today
   val = (now + dateDiff.to_i).strftime(DateFormat::uk)
@@ -64,7 +64,7 @@ When /^I fill in "(.*?)" with today plus (\d+)$/ do |field, dateDiff|
   find('body').trigger "mousedown"
 end
 
-When /^I fill in "(.*?)" with today plus (\d+) with dot-format$/ do |field, dateDiff|
+When /^(?:|I )fill in "(.*?)" with today plus (\d+) with dot-format$/ do |field, dateDiff|
   element = find_field(field)
   now = @today || Date.today
   val = (now + dateDiff.to_i).strftime(DateFormat::eu)
@@ -171,7 +171,7 @@ end
 #      | #i-containers-1-equipmentStuffings-1-cargo-hsCode |070310 |
 #
 #   And the "#i-containers-1-equipmentStuffings-1-cargo-hsCode" field should contain "070310"
-When(/^I should verify content of the following fields:$/) do |table|
+When(/^(?:|I )should verify content of the following fields:$/) do |table|
   # table is a | |
   table.hashes.each do |item|
     raise "FATAL: item['label, name or id'] not available, did you remember heading for your table" if item['label, name or id'].nil? or item['label, name or id'].empty?
@@ -217,7 +217,7 @@ end
 
 
 
-When /^(?:I|i) select following values from "(.*?)":$/ do |field, values|
+When /^(?:|I )select following values from "(.*?)":$/ do |field, values|
   values = values.transpose.raw
   if values.size > 1
     raise 'table should have only one column in this step!'
@@ -230,7 +230,7 @@ When /^(?:I|i) select following values from "(.*?)":$/ do |field, values|
   end
 end
 
-When /^(?:I|i) unselect following values from "(.*?)":$/ do |field, values|
+When /^(?:|I )unselect following values from "(.*?)":$/ do |field, values|
   values = values.transpose.raw
   if values.size > 1
     raise 'table should have only one column in this step!'

@@ -26,20 +26,20 @@ When /^(?:|I )(?:follow|click) the (.+?) "(.+?)"$/ do |element_type, label|
   find(element_type, :text => label).click
 end
 
-Then /^I should be redirected to (.+)$/ do |page|
+Then /^(?:|I )should be redirected to (.+)$/ do |page|
   step "I should be on #{page}"
 end
 
-Then /^I should see "([^"]+)"$/ do |text|
+Then /^(?:|I )should see "([^"]+)"$/ do |text|
   page.should have_content(text)
 end
 
-Then /^I should see '([^']+)'$/ do |text|
+Then /^(?:|I )should see '([^']+)'$/ do |text|
   page.should have_content(text)
 end
 
 
-Then /^I should see ignorecase "([^"]+)"$/ do |text|
+Then /^(?:|I )should see ignorecase "([^"]+)"$/ do |text|
   page.body.should match(%r{#{text}}i)
 end
 
@@ -72,15 +72,15 @@ Then /^the page should have status (\w+)$/ do |status_code|
 end
 
 #how many elements of `locator` type which are actually visible
-Then /^I should see (\d+) elements? kind of "(.+?)"$/ do |count, locator|
+Then /^(?:|I )should see (\d+) elements? kind of "(.+?)"$/ do |count, locator|
   page.should have_selector(locator, :visible => true, :count => count)
 end
 
-Then /^I should see at least (\d+) elements? kind of "(.+?)"$/ do |count, locator|
+Then /^(?:|I )should see at least (\d+) elements? kind of "(.+?)"$/ do |count, locator|
   page.should have_selector(locator, :minimum => count.to_i)
 end
 
-Then /^I should not see elements? kind of "(.+?)"$/ do |locator|
+Then /^(?:|I )should not see elements? kind of "(.+?)"$/ do |locator|
   page.should have_selector(locator, :visible => true, :count => 0)
 end
 
@@ -91,7 +91,7 @@ end
 #      | First text  | visible  | .first  |
 #      | Second text | visible  | .second |
 #   TODO 12th September. Revisit this step def as it gave problems looking up texts
-Then /^I should verify the following texts:$/ do |table|
+Then /^(?:|I )should verify the following texts:$/ do |table|
   table.hashes.each do |item|
     raise "FATAL: item[:verify] not available, did you remember heading for your table" if item[:verify].nil? or item[:verify].empty?
     raise "FATAL: item[:visible] not available, did you remember heading for your table" if item[:visible].nil? or item[:visible].empty?
@@ -107,7 +107,7 @@ Then /^the text "(.*?)" should be visible$/ do |text|
   page.should have_xpath("//*[contains(text(),'#{text}')]", :visible => true)
 end
 
-Then /^I should not see "(.*?)" visibly$/ do |text|
+Then /^(?:|I )should not see "(.*?)" visibly$/ do |text|
   #NOTE: :xpath "//*" will match from ROOT, which actually works correct with the "within" scope selector.
   #page.should have_selector(":contains('#{text}')", :visible => true)
   page.should_not have_xpath("//*[contains(text(),'#{text}')]", :visible => true)

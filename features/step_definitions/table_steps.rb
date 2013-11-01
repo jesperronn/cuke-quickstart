@@ -1,6 +1,6 @@
 # this file is nicked from
 # https://gist.github.com/pcreux/1662281
-Then /^I should see the following "([^"]*)" table:$/ do |table_selector, expected_table|
+Then /^(?:|I )should see the following "([^"]*)" table:$/ do |table_selector, expected_table|
   step %Q(the element "#{table_selector}" should be visible)
   expected_table.diff!(table_at(table_selector).to_a)
 end
@@ -13,7 +13,7 @@ def table_at(selector)
   end[0].reject(&:empty?)
 end
 
-Then /^I should see the following "([^"]*)" description list:$/ do |dl_selector, expected_table|
+Then /^(?:|I )should see the following "([^"]*)" description list:$/ do |dl_selector, expected_table|
   dts = elems_of_type_within('dt', dl_selector)
   dds = elems_of_type_within('dd', dl_selector)
   actual_table = dts.zip(dds)
