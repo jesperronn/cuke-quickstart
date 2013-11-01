@@ -103,22 +103,13 @@ When /^(?:|I )choose "(.*?)"$/ do |field|
   choose(field)
 end
 
-Then(/^"(.*?)" should be unchecked$/) do |field|
+Then(/^"(.*?)" should not be checked$/) do |field|
   find_field(field, :checked => false)
 end
 
 Then(/^"(.*?)" should be checked/) do |field|
   find_field(field, :checked => true)
 end
-
-Then(/^the "(.*?)" checkbox should not be checked$/) do |field|
-  find_field(field, :checked => false)
-end
-
-Then(/^the "(.*?)" checkbox should be checked/) do |field|
-  find_field(field, :checked => true)
-end
-
 
 When /^(?:|I )attach the file "(.*?)" to "(.*?)"$/ do |file, field|
   path = File.expand_path(File.join(ROOT,"testdata/attachments/#{file}"))

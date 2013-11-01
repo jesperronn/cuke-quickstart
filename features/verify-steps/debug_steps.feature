@@ -8,12 +8,13 @@ Feature: Test debug features
     Given I go to /forms.html
     * I take a screenshot named my_funny_screenshot
 
+  @ignore @working
   Scenario: show page screenshot and html
     Given I go to /forms.html
     * show me the page  
 
   #debug step works but locks the other tests so don't use it normally
-  @ignore 
+  @ignore @working
   Scenario: I open a debug browser
     Given I go to /forms.html
     * I open the debug browser

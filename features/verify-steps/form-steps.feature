@@ -24,8 +24,8 @@ Feature: Form steps verification
      | Wants Email?                     |            |
      | Sex                              | m          |
      | Radio 1                          | p1         |
-    * the "Accept user agreement" checkbox should be checked
-    * the "Send me letters" checkbox should not be checked
+    * "Accept user agreement" should be checked
+    * "Send me letters" should not be checked
     * the "Account Number" field should contain "5002"
     * the "account-number" field should contain "5002"
     * the "expdate" field should contain "2009-11-01"
