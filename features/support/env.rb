@@ -22,7 +22,7 @@ require File.dirname(__FILE__) + '/my_data'
 require File.dirname(__FILE__) + '/hooks'
 
 $logger = MyLog.init_log
-#$logger.level = Logger::INFO
+$logger.level = Logger::INFO
 
 # Determine environment and root
 ROOT = File.dirname(__FILE__) + '/../../'#in the root of /cucumber dir.
@@ -37,20 +37,6 @@ CHROME_BIN="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
 #CHROME_BIN="/opt/google/chrome/google-chrome"
 
 
-#local server running?
-if MyData.env('has_local_server')
-  #EXIT if local test server is not running
-  host = "127.0.0.1"
-  res = system "exec 6<>/dev/tcp/#{host}/#{MyData.env('port')}" #returns false if server not running
-  if !res
-    puts
-    puts
-    puts "FATAL: Local server not running. Expected http://#{host}:#{MyData.env('port')}"
-    puts "Start local test server: 'make test' or 'make server_start'"
-    exit
-  end
-end
-
 def startup_info
   txt = []
   txt << "Starting up test with the following configuration:"
@@ -62,6 +48,21 @@ def startup_info
   txt << "    Cucumber    #{Cucumber::VERSION}"
   txt << "    Nokogiri    #{Nokogiri::VERSION}"
   return txt
+end
+
+$logger.info startup_info
+#local server running?
+if MyData.env('has_local_server') && MyData.env('has_local_server') == true 
+  #EXIT if local test server is not running
+  host = "127.0.0.1"
+  res = system "exec 6<>/dev/tcp/#{host}/#{MyData.env('port')}" #returns false if server not running
+  if !res
+    puts
+    puts
+    puts "FATAL: Local server not running. Expected http://#{host}:#{MyData.env('port')}"
+    puts "Start local test server: 'make test' or 'make server_start'"
+    exit
+  end
 end
 
 
@@ -85,7 +86,6 @@ Capybara.configure do |config|
   puts "Host: \e[0;103m#{config.app_host}\e[00m to change add more profiles into cucumber.yml"
   puts
   puts ""
-  $logger.info startup_info
 end
 
 def phantom_options
