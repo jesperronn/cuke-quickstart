@@ -107,7 +107,15 @@ Then(/^"(.*?)" should be unchecked$/) do |field|
   find_field(field, :checked => false)
 end
 
-Then(/^"(.*?)"" should be checked/) do |field|
+Then(/^"(.*?)" should be checked/) do |field|
+  find_field(field, :checked => true)
+end
+
+Then(/^the "(.*?)" checkbox should not be checked$/) do |field|
+  find_field(field, :checked => false)
+end
+
+Then(/^the "(.*?)" checkbox should be checked/) do |field|
   find_field(field, :checked => true)
 end
 
@@ -178,24 +186,6 @@ When(/^I should verify content of the following fields:$/) do |table|
   end
 end
 
-
-Then /^the "(.*?)" checkbox should be checked$/ do |label|
-  field_checked = find_field(label)['checked']
-  if field_checked.respond_to? :should
-    field_checked.should be_true
-  else
-    assert field_checked
-  end
-end
-
-Then /^the "(.*?)" checkbox should not be checked$/ do |label|
-  field_checked = find_field(label)['checked']
-  if field_checked.respond_to? :should
-    field_checked.should be_false
-  else
-    assert !field_checked
-  end
-end
 
 When /^(?:|I )press "(.*?)"$/ do |button|
   click_button(button)

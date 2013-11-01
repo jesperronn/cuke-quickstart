@@ -30,8 +30,11 @@ ROOT = File.dirname(__FILE__) + '/../../'#in the root of /cucumber dir.
 MyData.load_test_data "#{ROOT}/", ENV['SELECTED_ENV'].upcase
 
 DEFAULT_PORT = ":#{MyData.env('port')}" if MyData.env_is_not_default_port?
-
-
+#mac
+CHROME_BIN="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+#CHROME_BIN="/Applications/Google Chrome.app/Contents/MacOS/GoChrome --user-data-dir=/tmp"
+#linux (tested on fedora)
+#CHROME_BIN="/opt/google/chrome/google-chrome"
 
 
 #local server running?
@@ -71,6 +74,7 @@ Capybara.configure do |config|
   config.javascript_driver = :poltergeist
   config.run_server        = false
   config.default_wait_time = 2 #default is 2 seconds
+  config.save_and_open_page_path = "/tmp"
 
   #smooth update from capybara 1.x to 2.1 see http://www.elabs.se/blog/60-introducing-capybara-2-1
   config.match             = :prefer_exact
@@ -96,7 +100,7 @@ end
 Capybara.register_driver :poltergeist do |app|
 
   Capybara::Poltergeist::Driver.new(app,
-    :inspector => '/opt/google/chrome/google-chrome', # TO USE: page.driver.debug
+    :inspector => CHROME_BIN, # usage (via capybara): page.driver.debug
     :phantomjs_options => phantom_options,
     :debug => ENV['POLTERGEIST_DEBUG'] || false,
     #:timeout => 55,
