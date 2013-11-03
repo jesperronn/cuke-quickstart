@@ -21,6 +21,9 @@ rerun_opts = rerun.to_s.strip.empty? ? "#{default_format_multi} features" : "#{d
 steptesting: --tags @steptesting <%= common %> SELECTED_ENV=steptesting
 default: --profile steptesting
 
+nine: --tags @nine <%= common %> SELECTED_ENV=nine
+
+
 #print all step definitions which exist:
 stepdefs:   --dry-run --format stepdefs <%= common %>
 #list all tags defined in the .feature files:

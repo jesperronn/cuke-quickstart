@@ -1,0 +1,12 @@
+# Testdata is now loaded from this file in Yaml format
+environment:
+  url: http://nineconsult.dk
+  port: 
+  user_prefix:
+  path_prefix:
+  has_local_server: false
+  use_no_proxy: true
+
+testdata: 
+  environment: NINE
+
