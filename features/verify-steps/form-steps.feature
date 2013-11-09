@@ -5,7 +5,7 @@ Feature: Form steps verification
   I want to know that all works as I expect
 
 
-  Scenario: Fill in standard form elements
+  Scenario: Fill in standard form elements (multi-fill-in)
     Given I go to /forms.html
     * I should see "Account Number"
     * I fill in the following:
@@ -30,6 +30,22 @@ Feature: Form steps verification
     * the "account-number" field should contain "5002"
     * the "expdate" field should contain "2009-11-01"
     * the "Wants Email?" field should be empty
+
+  Scenario: Fill in standard form elements (multi-fill-in)
+    Given I go to /forms.html
+    * I should see "Account Number"
+    * I fill in "Account Number" with "10020"
+    * I select "Female" from "Sex"
+    * I choose "Radio 2"
+    * I uncheck "Accept user agreement"
+    * I should verify content of the following fields:
+     | label, name or id                | value      |
+     | Account Number                   | 10020      |
+     | Radio 2                          | p2         |
+    * the option "Female" should be selected in "Sex"
+    * "Accept user agreement" should not be checked
+    * I check "Accept user agreement"
+    * "Accept user agreement" should be checked
 
   Scenario: Field should not contain
     Given I go to /forms.html

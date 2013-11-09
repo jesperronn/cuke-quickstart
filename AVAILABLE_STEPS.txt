@@ -48,6 +48,7 @@ AVAILABLE STEP DEFINITIONS
 /^(?:|I )take a screenshot(?: named ([^ ]*))?$/
 /^(?:|I )uncheck "(.*?)"$/
 /^(?:|I )unselect following values from "(.*?)":$/
+/^I should see the following employees:$/
 /^show me the page$/
 /^the "(.*?)" field should be empty$/
 /^the "(.*?)" field should contain "(.*?)"$/
@@ -83,12 +84,9 @@ UNUSED STEP DEFINITIONS
 /^(?:|I )(?:follow|click) the (.+?) "(.+?)"$/
 /^(?:|I )attach the file "(.*?)" to "(.*?)"$/
 /^(?:|I )cancel the modal window "(.*?)"$/
-/^(?:|I )check "(.*?)"$/
-/^(?:|I )choose "(.*?)"$/
 /^(?:|I )close the modal window "(.*?)"$/
 /^(?:|I )fill in "(.*?)" with:$/
 /^(?:|I )open the debug browser$/
-/^(?:|I )select "(.*?)" from "(.*?)"$/
 /^(?:|I )select first option from "(.*?)" in "(.*?)"$/
 /^(?:|I )select following values from "(.*?)":$/
 /^(?:|I )select2 "(.*?)" in "(.*?)"$/
@@ -98,7 +96,6 @@ UNUSED STEP DEFINITIONS
 /^(?:|I )should see the following "([^"]*)" table:$/
 /^(?:|I )should verify the following texts:$/
 /^(?:|I )submit the modal window "(.*?)"$/
-/^(?:|I )uncheck "(.*?)"$/
 /^(?:|I )unselect following values from "(.*?)":$/
 /^show me the page$/
 /^the "(.*?)" field should contain:$/
@@ -114,7 +111,6 @@ UNUSED STEP DEFINITIONS
 /^the invisible field "(.*?)" should contain:$/
 /^the modal window "(.*?)" should be hidden$/
 /^the modal window "(.*?)" should be visible$/
-/^the option "(.*?)" should be selected in "(.*?)"$/
 /^the select "(.*?)" should have the following visible options:$/
 /^the text "(.*?)" should not exist$/
 
