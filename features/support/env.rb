@@ -77,10 +77,10 @@ Capybara.configure do |config|
   config.default_wait_time = 2 #default is 2 seconds
   config.save_and_open_page_path = "/tmp"
 
-  #smooth update from capybara 1.x to 2.1 see http://www.elabs.se/blog/60-introducing-capybara-2-1
   config.match             = :prefer_exact
-  config.ignore_hidden_elements = false
 
+  config.ignore_hidden_elements = true
+  config.visible_text_only      = true
   puts
   puts "ENV['SELECTED_ENV']: " + ENV['SELECTED_ENV']
   puts "Host: \e[0;103m#{config.app_host}\e[00m to change add more profiles into cucumber.yml"

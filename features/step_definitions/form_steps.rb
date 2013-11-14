@@ -147,23 +147,39 @@ Then /^the "(.*?)" field should not contain "(.*?)"$/ do |locator, value|
   end
 end
 
+# USE WITH CARE
+# Capybara ignores all hidden elements (just like a real user).
+# You are much better off verifying real user behaviour.
+#
+# However, if you need to verify a hidden field, this step does it with javascript
+# (expects jquery present)
+#
+# Call this with a "locator" -- CSS expression given to jquery
+#
+#  * the invisible field "#hidden-id" should contain "the hidden stuff"
+#
 Then /^the invisible field "(.*?)" should contain "(.*?)"$/ do |locator, text|
-  page.find_field(locator, :visible => false, :with => text)
+  #page.find_field(locator, :visible => false, :with => text)
+  js = %{$('#{locator}').val()}
+  result = page.evaluate_script(js);
+  normalize_whitespace(result).should eq( normalize_whitespace(text) )
 end
 
+# USE WITH CARE
+# Capybara ignores all hidden elements (just like a real user).
+# You are much better off verifying real user behaviour.
+#
+# However, if you need to verify a hidden field, this step does it with javascript
+# (expects jquery present)
+#
+# Call this with a "locator" -- CSS expression given to jquery
+#
+#  * the invisible field "#hidden-id" should contain "the hidden stuff"
+#
 Then /^the invisible field "(.*?)" should contain:$/ do |locator, text|
-  begin
-    page.find_field(locator, :visible => false, :with => text)
-  rescue Capybara::ElementNotFound
-    elem = find_field(locator, :visible => false)
-    message = %(Unable to find field "#{locator}" with value "#{value}" -- found #{elem})
-
-    #the line below will raise exception if text not matching
-    elem.value.should eq(value) if elem
-
-    message += %( -- value: '#{elem.value}') if elem
-    raise message
-  end
+  js = %{$('#{locator}').val()}
+  result = page.evaluate_script(js);
+  normalize_whitespace(result).should eq( normalize_whitespace(text) )
 end
 
 

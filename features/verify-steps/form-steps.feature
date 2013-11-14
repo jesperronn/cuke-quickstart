@@ -77,43 +77,52 @@ Feature: Form steps verification
     * the "Expiry date" field should contain "01.11.2012"
 
 
-    Scenario: Verify click on button
-      Given I go to /forms.html
-      * I should see "Press this button to remove this line with button"
-      * I press "Press this button"
-      * I should not see "Press this button"
-
-    
-    @ignore @fails
-    Scenario: Verify click on input[type=button]
-      Given I go to /forms.html
-      #* I should see "Press this other button to remove this line"
-      * I should see "Press this other button"
-      * I should see " to remove this line with input[button]"
-      * I press "Press this other button"
-      * I should not see "Press this other button"
-
-    
-    
+  Scenario: Verify click on button
+    Given I go to /forms.html
+    * I should see "Press this button to remove this line with button"
+    * I press "Press this button"
+    * I should not see "Press this button"
 
 
-  @ignore @fails  
+  @wip
+  Scenario: Element should have value
+    Given I go to /forms.html
+    * I fill in the following:
+     | Account Number                   | 5002       |
+     | Expiry date                      | 2009-11-01 |
+     | Wants Email?                     |            |
+     | Sex                   (select)   | Male       |
+     | Accept user agreement (checkbox) | check      |
+     | Send me letters       (checkbox) | uncheck    |
+     | Radio 1               (radio)    | choose     |
+     | Avatar                (file)     | avatar.jpg |
+    * the "Account Number" field should contain "5002"
+    #* the element "#accountNumber" should have value "5002"
+
+
+  @ignore @fails
+  Scenario: Verify click on input[type=button]
+    Given I go to /forms.html
+    #* I should see "Press this other button to remove this line"
+    * I should see "Press this other button"
+    * I should see " to remove this line with input[button]"
+    * I press "Press this other button"
+    * I should not see "Press this other button"
+
+
   Scenario: Hidden fields
     Given I go to /forms.html
-    # Unable to find field "hidden-id" (Capybara::ElementNotFound)
-    * the invisible field "hidden-name" should contain "the hidden stuff"
-    * the invisible field "hidden-id" should contain "the hidden stuff"
+    * the invisible field "#hidden-id" should contain "the hidden stuff"
+    * the invisible field "#hidden-id" should contain:
+      """
+      the hidden stuff
+      """
 
-  @ignore @fails  
   Scenario: Hidden textareas
     Given I go to /forms.html
-    * the invisible field "hidden-name" should contain:
+    * the invisible field "#hidden-textarea-id" should contain:
       """
-      the hidden stuff
-      """
-    * the invisible field "hidden-textarea" should contain:
-      """
-      the hidden stuff
+      the hidden textarea
       """
 
 

@@ -31,7 +31,7 @@ Feature: Browsing steps verification
     * I should see ignorecase "NorMAL ViSible TExT"
     * the text "1. normal visible text" should be visible
     * the text "1H. first hidden paragraph" should be hidden
-    #* I should not see "first hidden paragraph"
+    * I should not see "first hidden paragraph"
   
   
   Scenario: Count occurrences
@@ -46,7 +46,6 @@ Feature: Browsing steps verification
   
   
 
-  @fails @ignore
   Scenario: Should not see hidden text
     * I go to the frontpage
     * I should not see "first hidden paragraph"
