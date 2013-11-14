@@ -48,7 +48,6 @@ AVAILABLE STEP DEFINITIONS
 /^(?:|I )take a screenshot(?: named ([^ ]*))?$/
 /^(?:|I )uncheck "(.*?)"$/
 /^(?:|I )unselect following values from "(.*?)":$/
-/^I should see the following employees:$/
 /^show me the page$/
 /^the "(.*?)" field should be empty$/
 /^the "(.*?)" field should contain "(.*?)"$/
@@ -93,7 +92,6 @@ UNUSED STEP DEFINITIONS
 /^(?:|I )should be redirected to (.+)$/
 /^(?:|I )should not see "(.*?)" visibly$/
 /^(?:|I )should not see \/([^\/]*)\/([imxo])?$/
-/^(?:|I )should see the following "([^"]*)" table:$/
 /^(?:|I )should verify the following texts:$/
 /^(?:|I )submit the modal window "(.*?)"$/
 /^(?:|I )unselect following values from "(.*?)":$/
@@ -107,8 +105,6 @@ UNUSED STEP DEFINITIONS
 /^the element "(.*?)" should not be empty$/
 /^the following values should be selected in "(.*?)":$/
 /^the following values should not be selected in "(.*?)":$/
-/^the invisible field "(.*?)" should contain "(.*?)"$/
-/^the invisible field "(.*?)" should contain:$/
 /^the modal window "(.*?)" should be hidden$/
 /^the modal window "(.*?)" should be visible$/
 /^the select "(.*?)" should have the following visible options:$/

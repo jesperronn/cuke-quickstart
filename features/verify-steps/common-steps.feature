@@ -51,4 +51,14 @@ Feature: Browsing steps verification
     * I should not see "first hidden paragraph"
   
 
-  
+  @wip
+  Scenario: Verify table based text
+      * I go to the frontpage
+      * I should see the following "table" table:
+        | Column 1 | Column 2 | Column 3 | Column 4 |
+        | 11       | 12       | 13       | 14       |
+        | 21       | 22       | 23       | 24       |
+        | 31       | 32       | 33       | 34       |
+   
+      * I should see "Column 1 Column 2 Column 3 Column 4 11 12 13 14 21 22 23 24 31 32 33 34" within table
+      
