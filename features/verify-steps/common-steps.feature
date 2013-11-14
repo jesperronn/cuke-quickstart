@@ -22,7 +22,7 @@ Feature: Browsing steps verification
     * I go to /nonexisting
     * the page should have status 404
 
-  
+
   Scenario: Visible text
     * I go to the frontpage
     * I should see "1. normal visible text"
@@ -32,8 +32,8 @@ Feature: Browsing steps verification
     * the text "1. normal visible text" should be visible
     * the text "1H. first hidden paragraph" should be hidden
     * I should not see "first hidden paragraph"
-  
-  
+
+
   Scenario: Count occurrences
     * I go to the frontpage
     * I should see 3 elements kind of "p"
@@ -43,22 +43,11 @@ Feature: Browsing steps verification
   Scenario: Dom occurrences
     * I go to the frontpage
     * I should not see elements kind of "input"
-  
-  
+
+
 
   Scenario: Should not see hidden text
     * I go to the frontpage
     * I should not see "first hidden paragraph"
   
-
-  @wip
-  Scenario: Verify table based text
-      * I go to the frontpage
-      * I should see the following "table" table:
-        | Column 1 | Column 2 | Column 3 | Column 4 |
-        | 11       | 12       | 13       | 14       |
-        | 21       | 22       | 23       | 24       |
-        | 31       | 32       | 33       | 34       |
-
-      * I should see "Column 1 Column 2 Column 3 Column 4 11 12 13 14 21 22 23 24 31 32 33 34" within table
 
