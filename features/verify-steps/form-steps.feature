@@ -84,7 +84,6 @@ Feature: Form steps verification
     * I should not see "Press this button"
 
 
-  @wip
   Scenario: Element should have value
     Given I go to /forms.html
     * I fill in the following:

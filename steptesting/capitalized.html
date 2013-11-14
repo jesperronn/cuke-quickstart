@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Cucumber custom steps Test Suite</title>
+  <style type="text/css">
+  /* css needed to verify steps */
+  body{font-family: Helvetica, Arial, sans-serif; background:white;}
+  .hidden, .hide{ display: none; }
+  fieldset { margin-bottom: 20px; width: 60%;}
+
+  .capitalized {
+    text-transform: capitalize;
+  }
+
+  .ok { color: green;    background-color: #efe;}
+  .err { color: #cc6666; background-color: #fee;}
+  </style>
+
+ 
+</head>
+<body>
+  <section class="first">
+    <h1>Capitalization problem</h1>
+    <p>Problem: after changing capybaras <code>config.visible_text_only = true</code>, i got an error in text.</p>
+    <p>I had tabs where each tab had a lowercase name like this (unstyled):</p>
+    <ul class="unstyled">
+      <li>first tab</li>
+      <li>second tab</li>
+      <li>third tab</li>
+    </ul>
+
+    <p>I style it with <code>text-transform: capitalize</code> like this:</p>
+    <ul class="capitalized">
+      <li>first tab</li>
+      <li>second tab</li>
+      <li>third tab</li>
+    </ul>
+
+
+  </section>
+  
+  <fieldset>
+    <p><strong>Example 1</strong></p>
+
+   <pre><code>
+  config.ignore_hidden_elements = true
+  config.visible_text_only      = true
+</code></pre> 
+   will give the following result
+
+
+    <pre><code>
+<span class="ok">  Scenario: CSS capitalized text</span>
+<span class="ok">   * I go to /capitalized.html</span>
+<span class="ok">   * I should see "first tab second tab third tab" within .unstyled</span>
+<span class="ok">   * I should see "First Tab Second Tab Third Tab" within .capitalized</span>
+</code></pre>
+    <p>Note that the same DOM text is interpreted differently for the two similar DOM texts.</p>
+
+  </fieldset>
+
+  <fieldset>
+    <p><strong>Example 2</strong></p>
+
+   <pre><code>
+  config.ignore_hidden_elements = true
+  config.visible_text_only      = false
+</code></pre> 
+
+    will give the same result
+
+
+    <pre><code>
+<span class="ok">  Scenario: CSS capitalized text</span>
+<span class="ok">   * I go to /capitalized.html</span>
+<span class="ok">   * I should see "first tab second tab third tab" within .unstyled</span>
+<span class="ok">   * I should see "First Tab Second Tab Third Tab" within .capitalized</span>
+</code></pre>
+    <p>Note that the same DOM text is interpreted differently for the two similar DOM texts.</p>
+
+
+  </fieldset>
+  <fieldset>
+    <p><strong>Example 3</strong></p>
+
+   <pre><code>
+  config.ignore_hidden_elements = false
+  config.visible_text_only      = true
+</code></pre> 
+
+    will give the same result
+
+
+    <pre><code>
+<span class="ok">  Scenario: CSS capitalized text</span>
+<span class="ok">   * I go to /capitalized.html</span>
+<span class="ok">   * I should see "first tab second tab third tab" within .unstyled</span>
+<span class="ok">   * I should see "First Tab Second Tab Third Tab" within .capitalized</span>
+</code></pre>
+    <p>Still interpreting the CamelCased css as part of the DOM</p>
+
+
+  </fieldset>
+  <fieldset>
+    <p><strong>Example 4 <span class="err">Failing</span></strong></p>
+
+   <pre><code>
+  config.ignore_hidden_elements = false
+  config.visible_text_only      = false
+</code></pre> 
+
+    will give the same result
+
+
+    <pre><code>
+<span class="ok">  Scenario: CSS capitalized text</span>
+<span class="ok">   * I go to /capitalized.html</span>
+<span class="ok">   * I should see "first tab second tab third tab" within .unstyled</span>
+<span class="err">   * I should see "First Tab Second Tab Third Tab" within .capitalized</span>
+<span class="err">      expected to find text "First Tab Second Tab Third Tab" in "first tab second tab third tab" (RSpec::Expectations::ExpectationNotMetError)</span>
+<span class="err">      ./features/step_definitions/browsing_steps.rb:34:in `/^(?:|I )should see "([^"]+)"$/'</span>
+<span class="err">      ./features/step_definitions/step_scoper.rb:8:in `block (2 levels) in <top (required)>'</span>
+<span class="err">      ./features/step_definitions/step_scoper.rb:8:in `/^(.*) within ([^:]+)$/'</span>
+<span class="err">      features/verify-steps/common-steps.feature:41:in `* I should see "First Tab Second Tab Third Tab" within .capitalized'</span>
+
+</code></pre>
+    <p>Look, for the first time we actually interpret DOM precisely</p>
+
+
+  </fieldset>
+</body>
+</html>
